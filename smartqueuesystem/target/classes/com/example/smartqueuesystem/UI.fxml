@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.smartqueuesystem.UIController">
+
+    <!-- TOP PANEL: Add new patients -->
+    <top>
+        <VBox spacing="8">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="Add New Patient" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+            <HBox spacing="8">
+                <TextField fx:id="nameField" promptText="Name" prefWidth="120"/>
+                <TextField fx:id="ageField" promptText="Age" prefWidth="70"/>
+                <ComboBox fx:id="sexChoice" promptText="Sex" prefWidth="100"/>
+                <ComboBox fx:id="categoryChoice" promptText="Category" prefWidth="120"/>
+                <Button fx:id="addButton" text="Add" onAction="#addPatient"/>
+                <Button fx:id="startButton" text="Start Queue" onAction="#startQueue"/>
+            </HBox>
+
+            <Label fx:id="statusLabel" text="Status: Waiting to start queue" wrapText="true"/>
+        </VBox>
+    </top>
+
+    <!-- CENTER PANEL: Four columns -->
+    <center>
+        <HBox spacing="15">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <!-- Waiting Queue -->
+            <VBox spacing="8">
+                <Label text="Waiting Queue" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <ListView fx:id="waitingList" prefWidth="250" prefHeight="400"/>
+            </VBox>
+
+            <!-- Currently Serving -->
+            <VBox spacing="8" alignment="TOP_CENTER">
+                <Label text="Currently Serving" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TextArea fx:id="currentServingArea"
+                          prefWidth="220" prefHeight="150"
+                          wrapText="true"
+                          editable="false"
+                          style="-fx-control-inner-background: #e8ffe8; -fx-font-size: 13px;"/>
+            </VBox>
+
+            <!-- Patient Details -->
+            <VBox spacing="8">
+                <Label text="Patient Details" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TextArea fx:id="detailsArea" prefWidth="240" prefHeight="220" wrapText="true"/>
+            </VBox>
+
+            <!-- Served Patients -->
+            <VBox spacing="8">
+                <Label text="Served Patients" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <ListView fx:id="servedList" prefWidth="180" prefHeight="180"/>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>
